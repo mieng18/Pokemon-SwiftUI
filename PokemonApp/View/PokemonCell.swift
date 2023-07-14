@@ -15,28 +15,20 @@ struct PokemonCell: View {
     
     var body: some View {
             VStack {
-              
-                    AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(vm.getPokemonIndex(pokemon: pokemon)).png")) {
-                        image in
-                        if let image = image {
-                           image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: dimensions, height: dimensions)
-                        }
-                    } placeholder: {
-                        ProgressView()
+                
+                AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(vm.getPokemonIndex(pokemon: pokemon)).png")) {
+                    image in
+                    if let image = image {
+                       image
+                            .resizable()
+                            .scaledToFit()
                             .frame(width: dimensions, height: dimensions)
                     }
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 20)
-//                                .fill(
-//                                    Color.white
-//                                        .opacity(0.25))
-//                                .padding(.all,8)
-//
-//                        )
-//
+                } placeholder: {
+                    ProgressView()
+                        .frame(width: dimensions, height: dimensions)
+                }
+                
                 Text(pokemon.name)
                     .font(.headline)
                     .fontWeight(.bold)
